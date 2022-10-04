@@ -2,7 +2,7 @@ import java.util.*;
 
 public class RepeatedWordWithCountInString {
   public static void main(String[] args) {
-    String paragraph = "Bob hit a ball the hit BALL flew far after it was hit";
+    String paragraph = "the cat is in the bag";
     String[] strArray = paragraph.toLowerCase().trim().split("\\s+");
     System.out.println(Arrays.toString(strArray));
     Set<String> set = new HashSet<>();
