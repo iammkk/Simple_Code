@@ -3,20 +3,18 @@ import java.util.*;
 public class RepeatedWordWithCountInString {
   public static void main(String[] args) {
     String paragraph = "the cat is in the bag";
+    Map<String, Integer> map = new HashMap<>();
     String[] strArray = paragraph.toLowerCase().trim().split("\\s+");
-    System.out.println(Arrays.toString(strArray));
-    Set<String> set = new HashSet<>();
-    for(int i = 0; i<strArray.length; i++){
-      int count =1;
-      for(int j=i+1; j<strArray.length; j++){
-        if(strArray[i].equalsIgnoreCase(strArray[j]) && !set.contains(strArray[i])){
-          count++;
-          set.add(strArray[i]);
-          System.out.print(count+" "+strArray[i]+"\n");
-        }
+    for (String s: strArray) {
+      int count = 1;
+      if(map.containsKey(s)){
+        count++;
+        map.remove(s);
+        map.put(s, count);
+      } else {
+        map.put(s, count);
       }
-      if(!set.contains(strArray[i]))
-        System.out.print(count+" "+strArray[i]+"\n");
     }
+    map.entrySet().stream().forEach(m -> System.out.println(m.getValue()+"  "+m.getKey()));
   }
 }
